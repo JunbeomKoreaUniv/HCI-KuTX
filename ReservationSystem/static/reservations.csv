@@ -1,0 +1,5 @@
+train_no,date,departure,arrival,time
+KTX001,2024-12-01,Seoul,Busan,08:00
+KTX029,2024-12-10,Seoul,Yongin,10:30
+KTX016,2024-12-06,Seoul,Busan,08:00
+KTX025,2024-12-09,Daejeon,Seoul,07:00

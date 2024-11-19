@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Reservations</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="/static/준범ktx.jpg" alt="Logo">
+    </div>
+    <div class="container">
+        <h1>My Reservations</h1>
+        <table>
+            <tr>
+                <th>Train No</th>
+                <th>Date</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+            {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.train_no }}</td>
+                <td>{{ reservation.date }}</td>
+                <td>{{ reservation.departure }}</td>
+                <td>{{ reservation.arrival }}</td>
+                <td>{{ reservation.time }}</td>
+                <td>
+                    <form action="/delete/{{ loop.index0 }}" method="post" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <a href="/change/{{ loop.index0 }}">
+                        <button type="button">Change</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>

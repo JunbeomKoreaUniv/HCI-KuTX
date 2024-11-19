@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Available Trains</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="/static/준범ktx.jpg" alt="Logo">
+    </div>
+    <div class="container">
+        <h1>Available Trains</h1>
+        <table>
+            <tr>
+                <th>Train No</th>
+                <th>Date</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+            {% for train in trains %}
+            <tr>
+                <td>{{ train.train_no }}</td>
+                <td>{{ train.date }}</td>
+                <td>{{ train.departure }}</td>
+                <td>{{ train.arrival }}</td>
+                <td>{{ train.time }}</td>
+                <td>
+                    <form method="POST" action="/reserve">
+                        <input type="hidden" name="train_no" value="{{ train.train_no }}">
+                        <input type="hidden" name="date" value="{{ train.date }}">
+                        <input type="hidden" name="departure" value="{{ train.departure }}">
+                        <input type="hidden" name="arrival" value="{{ train.arrival }}">
+                        <input type="hidden" name="time" value="{{ train.time }}">
+                        <button type="submit">Reserve</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/select">Back to Search</a>
+    </div>
+</body>
+</html>

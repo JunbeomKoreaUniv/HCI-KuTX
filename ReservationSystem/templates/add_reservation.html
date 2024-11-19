@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Reservation</title>
+</head>
+<body>
+    <div class="logo">
+        <img src="/static/준범ktx.jpg" alt="Logo">
+    </div>
+    <h1>Select a Train</h1>
+    <form method="POST">
+        <label for="train">Choose Train:</label>
+        <select name="train" required>
+            {% for train in trains %}
+            <option value="{{ train.train_no }},{{ train.date }},{{ train.time }},{{ train.details }}">
+                {{ train.train_no }} - {{ train.date }} {{ train.time }} ({{ train.details }})
+            </option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Reserve</button>
+    </form>
+    <a href="/">Back to Home</a>
+</body>
+</html>

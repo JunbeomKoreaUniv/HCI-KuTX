@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Change Reservation</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="/static/준범ktx.jpg" alt="Logo">
+    </div>
+    <div class="container">
+        <h1>Change Reservation</h1>
+        <p>
+            Current Reservation: {{ reservation.train_no }} - {{ reservation.date }}
+            {{ reservation.departure }} → {{ reservation.arrival }} at {{ reservation.time }}
+        </p>
+        <form method="POST">
+            <label for="train">Choose a New Train:</label>
+            <select name="train" required>
+                {% for train in trains %}
+                <option value="{{ train.train_no }},{{ train.date }},{{ train.time }},{{ train.departure }},{{ train.arrival }}"
+                    {% if train.train_no == reservation.train_no %}selected{% endif %}>
+                    {{ train.train_no }} - {{ train.date }} {{ train.departure }} → {{ train.arrival }} at {{ train.time }}
+                </option>
+                {% endfor %}
+            </select><br>
+            <button type="submit">Update</button>
+        </form>
+        <a href="/reservations">Back to Reservations</a>
+    </div>
+</body>
+</html>
